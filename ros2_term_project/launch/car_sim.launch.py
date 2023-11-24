@@ -81,4 +81,59 @@ def generate_launch_description():
         ]
     )
     ld.add_action(spawn_entity_node_pr002)
+
+    # Ackermann 드라이브 컨트롤러 추가 - PR001
+    ackermann_controller_pr001 = Node(
+        package='ackermann_drive_controller',
+        executable='ackermann_drive_controller_node',
+        name='ackermann_controller_pr001',
+        output='screen',
+        parameters=[
+            {'use_sim_time': True},
+            {'vehicle_name': 'PR001'},
+            {'publish_period': 0.1},  # 필요에 따라 게시 주기 조정
+        ]
+    )
+    ld.add_action(ackermann_controller_pr001)
+
+    # Ackermann 드라이브 컨트롤러 추가 - PR002
+    ackermann_controller_pr002 = Node(
+        package='ackermann_drive_controller',
+        executable='ackermann_drive_controller_node',
+        name='ackermann_controller_pr002',
+        output='screen',
+        parameters=[
+            {'use_sim_time': True},
+            {'vehicle_name': 'PR002'},
+            {'publish_period': 0.1},  # 필요에 따라 게시 주기 조정
+        ]
+    )
+    ld.add_action(ackermann_controller_pr002)
+
+    # 카메라 컨트롤러 추가 - PR001
+    camera_controller_pr001 = Node(
+        package='camera_controller_package',  # 카메라 컨트롤러 패키지 이름으로 수정
+        executable='camera_controller_node',
+        name='camera_controller_pr001',
+        output='screen',
+        parameters=[
+            {'camera_name': 'prius_camera_pr001'},
+            # 추가적인 카메라 컨트롤러 파라미터 설정
+        ]
+    )
+    ld.add_action(camera_controller_pr001)
+
+    # 카메라 컨트롤러 추가 - PR002
+    camera_controller_pr002 = Node(
+        package='camera_controller_package',  # 카메라 컨트롤러 패키지 이름으로 수정
+        executable='camera_controller_node',
+        name='camera_controller_pr002',
+        output='screen',
+        parameters=[
+            {'camera_name': 'prius_camera_pr002'},
+            # 추가적인 카메라 컨트롤러 파라미터 설정
+        ]
+    )
+    ld.add_action(camera_controller_pr002)
+
     return ld
